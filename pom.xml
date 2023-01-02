@@ -115,6 +115,25 @@
 		<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
+			<configuration>
+				<excludes>
+					<exclude>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+					</exclude>
+				</excludes>
+				<image>
+					<name>aicha01-web/${project.artifactId}:${project.version}</name>
+				</image>
+				<docker>
+					<publishRegistry>
+						<username>${docker.user}</username>
+						<password>${docker.token}</password>
+						<url>https://index.docker.io/v1</url>
+					</publishRegistry>
+				</docker>
+			</configuration>
 			</plugin>
 			
 			<plugin>
@@ -133,16 +152,6 @@
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
 						</path>
-						<image>
-							<name>aicha01-web/${project.artifactId}:${project.version}</name>
-						</image>
-						<docker>
-							<publishRegistry>
-								<username>${docker.user}</username>
-								<password>${docker.token}</password>
-								<url>https://index.docker.io/v1</url>
-							</publishRegistry>
-						</docker>
 						<dependency>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-mapstruct-binding</artifactId>
