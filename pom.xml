@@ -134,7 +134,7 @@
 							<version>${lombok.version}</version>
 						</path>
 						<image>
-							<name>aichasarr98/${project.artifactId}:${project.version}</name>
+							<name>aicha01-web/${project.artifactId}:${project.version}</name>
 						</image>
 						<docker>
 							<publishRegistry>
