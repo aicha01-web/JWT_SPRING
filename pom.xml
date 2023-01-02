@@ -133,6 +133,16 @@
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
 						</path>
+						<image>
+							<name>aichasarr98/${project.artifactId}:${project.version}</name>
+						</image>
+						<docker>
+							<publishRegistry>
+								<username>${docker.user}</username>
+								<password>${docker.token}</password>
+								<url>https://index.docker.io/v1</url>
+							</publishRegistry>
+						</docker>
 						<dependency>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-mapstruct-binding</artifactId>
@@ -143,7 +153,8 @@
 						<arg>-parameters</arg>
 						<arg>-Amapstruct.defaultComponentModel=spring</arg>
 					</compilerArgs>
-				</configuration>
+
+			</configuration>
 			</plugin>
 
 		</plugins>
