@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -74,8 +75,10 @@ public class UserService {
 
     @Transactional
     public void addRoleToUser(Long idUser,Long idRole){
-        AppUserEntity appUser = appUserRepository.findById(idUser).get();
-        AppRoleEntity appRoles = appRoleRepository.findById(idRole).get();
-        appUser.getRoles().add(appRoles);
+        Optional<AppUserEntity> appUser = appUserRepository.findById(idUser);
+        Optional<AppRoleEntity> appRoles = appRoleRepository.findById(idRole);
+        if(appUser.isPresent() && appRoles.isPresent()) {
+            appUser.get().getRoles().add(appRoles.get());
+        }
     }
 }
